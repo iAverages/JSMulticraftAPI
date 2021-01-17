@@ -1,7 +1,7 @@
 const crypto = require("crypto");
 const axios = require("axios");
 
-const url = "";
+const urlDef = "";
 const userDef = "";
 const keyDef = "";
 
@@ -11,12 +11,14 @@ const keyDef = "";
  * @param {Object} params - Any params that are needed for the method, ID for example.
  * @param {String} user - The user to use for the API request. Default can be set in the module
  * @param {String} key - API Key for the user. Default can be set in the module
+ * @param {String} url - The url to send the request to. Default can be set in the module
 */
-module.exports = async (method = "", params = {}, user = "", key = "") => {
+module.exports = async (method = "", params = {}, user = "", key = "", url = "") => {
     if (method == "")
         throw new Error("No method specified");
     user = user ? user : userDef;
     key = key ? key : keyDef;
+    url = url ? url : urlDef;
     params._MulticraftAPIUser = user;
     params._MulticraftAPIMethod = method;
     var str;
